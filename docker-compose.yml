@@ -2,7 +2,7 @@ version: '3.8'
 services:
   apache:
     container_name: glpiweb
-    image: glpi-10.0.2:latest
+    image: mooping/glpi-nginx-php74:latest
     networks:
             dbnet:
              ipv4_address: "192.168.10.11"
