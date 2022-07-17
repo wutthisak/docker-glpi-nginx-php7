@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  apache:
+    container_name: glpiweb
+    image: glpi-10.0.2:latest
+    networks:
+            dbnet:
+             ipv4_address: "192.168.10.11"
+    ports:
+      - 80:80
+      - "16100:16100/udp"
+      - "161:161/udp"
+      - "162:162/udp"
+    volumes:
+      - ./var/www/html:/var/www/html
+      - ./php/php.ini:/etc/php/7.4/fpm/php.ini
+    
+  # docker network create --driver=bridge --subnet=192.168.10.0/24 dbnet
+networks:
+  dbnet:
+   external: true  
